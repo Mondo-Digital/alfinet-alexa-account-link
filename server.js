@@ -4,9 +4,10 @@ const { default: createShopifyAuth  } = require('@shopify/koa-shopify-auth');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const { verifyRequest  } = require('@shopify/koa-shopify-auth');
+// const { verifyRequest  } = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 const koaRouter = require('koa-router');
+const static = require('koa-static');
 const render = require('koa-ejs');
 const path = require('path');
 
@@ -21,6 +22,7 @@ const memoryState = {}
 const server = new Koa();
 server.keys = [SHOPIFY_API_SECRET_KEY];
 server.use(session({ sameSite: 'none', secure: true  }, server));
+server.use(static(__dirname + '/public'))
 
 render(server, {
   root: path.join(__dirname, 'view'),
@@ -56,7 +58,7 @@ server.use(
   }),
 );
 
-server.use(verifyRequest());
+// server.use(verifyRequest());
 
 server.listen(port, () => {
   console.log(`> Ready on http://localhost:${port}`);

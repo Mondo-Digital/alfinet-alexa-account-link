@@ -1,7 +1,32 @@
-<form action="/alexa-account-link" method="GET">
-  <input type="hidden" name="state" value="<%= oauth.state %>" />
-  <input type="hidden" name="client_id" value="<%= oauth.client_id %>" />
-  <input type="hidden" name="redirect_uri" value="<%= oauth.redirect_uri %>" />
-  <input type="text" name="shop" />
-  <input type="submit" />
-</form>
+<div class="container mx-auto bg-gray-800 h-full flex flex-col items-center justify-center">
+  <div class="form-wrapper p-5 flex flex-col bg-white rounded-md">
+    <div class="flex justify-center">
+      <img src="/assets/alfinet-logo.png" class="ShopLogin__logo max-h-32" alt="alfinet logo image"/>
+    </div>
+    <div>
+      Qual o domínio da sua loja Shopify?
+    </div>
+    <form action="/alexa-account-link" method="GET" class="space-y-6">
+      <input type="hidden" name="state" value="<%= oauth.state %>" />
+      <input type="hidden" name="client_id" value="<%= oauth.client_id %>" />
+      <input type="hidden" name="redirect_uri" value="<%= oauth.redirect_uri %>" />
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="email-address" class="sr-only">Email address</label>
+          <input id="email-address" name="shop" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="minhaloja.shopify.com">
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+          Continuar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.form-wrapper {
+  max-width: 300px;
+}
+</style>
