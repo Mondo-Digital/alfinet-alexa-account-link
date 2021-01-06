@@ -36,7 +36,7 @@ router
     await ctx.render('shop-login', { oauth: ctx.query })
   })
   .get('/alexa-account-link', async (ctx) => {
-    const { shop, state, redirect_uri, token_type } = ctx.query
+    const { shop, state, redirect_uri } = ctx.query
     memoryState[shop] = { state, redirect_uri }
     ctx.redirect(`/auth?shop=${shop}`);
   })
@@ -49,10 +49,9 @@ server.use(
     scopes: ['read_products'],
     afterAuth(ctx) {
       const { shop, accessToken  } = ctx.session;
-      const { redirect_uri, state } = memoryState[shop]
+      const { state, redirect_uri } = memoryState[shop]
+      delete memoryState[shop]
 
-      console.log("SUCCESS redirecting")
-      console.log(`${redirect_uri}#state=${state}&access_token=${accessToken}&token_type=bearer`)
       ctx.redirect(`${redirect_uri}#state=${state}&access_token=${accessToken}&token_type=bearer`);
     },
   }),
