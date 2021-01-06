@@ -49,7 +49,9 @@ server.use(
       const { shop, accessToken  } = ctx.session;
       const { redirect_uri, state } = memoryState[shop]
 
-      ctx.redirect(`${redirect_uri}?state=${state}&access_token=${accessToken}&token_type=bearer`);
+      console.log("SUCCESS redirecting")
+      console.log(`${redirect_uri}#state=${state}&access_token=${accessToken}&token_type=bearer`)
+      ctx.redirect(`${redirect_uri}#state=${state}&access_token=${accessToken}&token_type=bearer`);
     },
   }),
 );
