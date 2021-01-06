@@ -1,0 +1,7 @@
+<form action="/alexa-account-link" method="GET">
+  <input type="hidden" name="state" value="<%= oauth.state %>" />
+  <input type="hidden" name="client_id" value="<%= oauth.client_id %>" />
+  <input type="hidden" name="redirect_uri" value="<%= oauth.redirect_uri %>" />
+  <input type="text" name="shop" />
+  <input type="submit" />
+</form>
