@@ -52,7 +52,7 @@ server.use(
       const { state, redirect_uri } = memoryState[shop]
       delete memoryState[shop]
 
-      ctx.redirect(`${redirect_uri}#state=${state}&access_token=${accessToken}&token_type=bearer`);
+      ctx.redirect(`${redirect_uri}#state=${state}&access_token=${shop}:${accessToken}&token_type=bearer`);
     },
   }),
 );
