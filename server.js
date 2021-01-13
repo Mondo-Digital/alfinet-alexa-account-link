@@ -46,7 +46,7 @@ server.use(
   createShopifyAuth({
     apiKey: SHOPIFY_API_KEY,
     secret: SHOPIFY_API_SECRET_KEY,
-    scopes: ['read_orders', 'read_checkouts', 'read_customers', 'read_products'],
+    scopes: ['read_orders', 'read_checkouts', 'read_customers', 'read_products', 'write_reports', 'read_reports'],
     afterAuth(ctx) {
       const { shop, accessToken  } = ctx.session;
       const { state, redirect_uri } = memoryState[shop]
