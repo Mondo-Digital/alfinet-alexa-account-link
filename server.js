@@ -46,6 +46,7 @@ server.use(
   createShopifyAuth({
     apiKey: SHOPIFY_API_KEY,
     secret: SHOPIFY_API_SECRET_KEY,
+    accessMode: 'offline',
     scopes: ['read_orders', 'read_checkouts', 'read_customers', 'read_products', 'write_reports', 'read_reports'],
     afterAuth(ctx) {
       const { shop, accessToken  } = ctx.session;
