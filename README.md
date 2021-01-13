@@ -7,6 +7,7 @@ Configurar as variáveis de ambiente no servidor (em ambiente de dev, só renome
 ```
 SHOPIFY_API_KEY='APP_API_KEY123'
 SHOPIFY_API_SECRET_KEY='APP_SECRET_KEY'
+SHOPIFY_SCOPES=read_orders,read_all_orders,read_checkouts,read_customers,read_products,write_reports,read_reports
 ```
 
 #### Fluxo:

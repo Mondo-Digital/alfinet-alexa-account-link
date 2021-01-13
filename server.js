@@ -14,7 +14,7 @@ const path = require('path');
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
-const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY  } = process.env;
+const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
 
 const router = koaRouter()
 const memoryState = {}
@@ -47,7 +47,7 @@ server.use(
     apiKey: SHOPIFY_API_KEY,
     secret: SHOPIFY_API_SECRET_KEY,
     accessMode: 'offline',
-    scopes: ['read_orders', 'read_checkouts', 'read_customers', 'read_products', 'write_reports', 'read_reports'],
+    scopes: process.env.SHOPIFY_SCOPES.split(','),
     afterAuth(ctx) {
       const { shop, accessToken  } = ctx.session;
       const { state, redirect_uri } = memoryState[shop]
