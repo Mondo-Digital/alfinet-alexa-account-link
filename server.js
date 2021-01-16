@@ -40,6 +40,15 @@ router
     memoryState[shop] = { state, redirect_uri }
     ctx.redirect(`/auth?shop=${shop}`);
   })
+  .post('/customers/redact', (ctx) => {
+    ctx.status = 200
+  })
+  .post('/shop/redact', (ctx) => {
+    ctx.status = 200
+  })
+  .post('/customers/data_request', (ctx) => {
+    ctx.status = 200
+  })
 
 server.use(router.routes())
 server.use(
