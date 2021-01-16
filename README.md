@@ -2,6 +2,8 @@
 
 Esse servidor só é necessário pois, no momento de início da vinculação de conta da Alexa, não temos o domínio da Loja Shopify do cliente para começar o processo de instalação/login.
 
+*OBS*: o `access_token` que retornamos pra Alexa é no formato `<shop-domain>:<shopify-token>` pois da Alexa precisamos o domínio para fazer as requisições da loja do cliente. Então parseamos o domínio do token retornado.
+
 ### Pré requisitos pro servidor
 Configurar as variáveis de ambiente no servidor (em ambiente de dev, só renomear o `.env.sample` para `.env` e colocar os valores nele)
 ```
